@@ -1,0 +1,16 @@
+<div class="note-wrapper">
+  <div class="tools-wrapper">
+    <span class="save"></span>
+    <span class="remove" (click)="removeNote()"></span>
+  </div>
+  <div class="note">
+    <span class="note-title">{{ title }}</span>
+    <span class="note-content">{{ content }}</span>
+  </div>
+  <div class="tags-wrapper">
+    <div class="tag-wrapper" *ngFor="let tag of tags">
+      <span class="bottom-tag">{{ tag }}</span>
+      <span class="delete-tag"></span>
+    </div>
+  </div>
+</div>

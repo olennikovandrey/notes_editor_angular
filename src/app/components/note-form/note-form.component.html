@@ -1,10 +1,36 @@
-<div class="flex">
-  <mat-form-field appearance="fill">
-    <mat-label>Input</mat-label>
+<div class="note-form-wrapper">
+  <mat-form-field appearance="outline" style="margin-bottom: 10px;">
+    <mat-label>Your note title</mat-label>
+    <input
+      matInput
+      [(ngModel)]="title">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Your note content</mat-label>
+    <textarea
+      matInput
+      [(ngModel)]="content"></textarea>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="addNote(title, content)">
+    Save
+  </button>
+  <mat-form-field appearance="outline">
+    <mat-label>Search request field</mat-label>
     <input matInput>
   </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Textarea</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
+  <button mat-raised-button color="primary">Search</button>
+</div>
+<div *ngIf="notes.length > 0" class="note-items-wrapper">
+  <div *ngFor="let note of notes">
+    <app-note-item
+      [title]="note.title"
+      [content]="note.content"
+      [tags]="note.hashTags"
+      (removeEvent)="removeNote($event)"
+    >
+    </app-note-item>
+  </div>
 </div>
