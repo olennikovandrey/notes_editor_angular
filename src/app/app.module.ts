@@ -1,30 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppRoutingModule } from './app-routing.module';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { MainPageWrapperComponent } from './components/main-page-wrapper/main-page-wrapper.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NoteFormComponent } from './components/note-form/note-form.component';
-
+import { NoteItemComponent } from './components/note-item/note-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageWrapperComponent,
     HeaderComponent,
-    NoteFormComponent
+    NoteFormComponent,
+    NoteItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
