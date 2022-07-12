@@ -19,11 +19,30 @@
   </button>
   <mat-form-field appearance="outline">
     <mat-label>Search request field</mat-label>
-    <input matInput>
+    <input
+      matInput
+      [(ngModel)]="searchValue"
+      (keyup)="search()">
   </mat-form-field>
-  <button mat-raised-button color="primary">Search</button>
 </div>
-<div *ngIf="notes.length > 0" class="note-items-wrapper">
+
+<div *ngIf="searchValue && !filteredNotes[0][0]" class="note-items-wrapper">
+  <p style="font-size: 25px;">There is no mathes to your search request</p>
+</div>
+
+<div *ngIf="searchValue && filteredNotes" class="note-items-wrapper">
+  <div *ngFor="let note of filteredNotes[0]">
+    <app-note-item
+      [title]="note.title | highlight: searchValue"
+      [content]="note.content | highlight: searchValue"
+      [tags]="note.hashTags"
+      (removeEvent)="removeNote($event)"
+    >
+    </app-note-item>
+  </div>
+</div>
+
+<div *ngIf="notes.length > 0 && !searchValue" class="note-items-wrapper">
   <div *ngFor="let note of notes">
     <app-note-item
       [title]="note.title"
