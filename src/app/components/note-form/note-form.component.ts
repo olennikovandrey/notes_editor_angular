@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { NotesData } from "../../models/notes-data.model";
 
 @Component({
@@ -43,4 +44,8 @@ export class NoteFormComponent implements OnInit {
     this.notes.splice(currentNoteIndex, 1, newNote);
     localStorage.setItem("Notes", JSON.stringify(this.notes));
   };
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.notes, event.previousIndex, event.currentIndex);
+  }
 };

@@ -38,7 +38,7 @@
   </div>
 </div>
 
-<div *ngIf="notes.length > 0 && !searchValue" class="note-items-wrapper">
+<div *ngIf="notes.length > 0 && !searchValue" class="note-items-wrapper" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
   <div *ngFor="let note of notes">
     <app-note-item
       [title]="note.title"
@@ -46,6 +46,7 @@
       [tags]="note.hashTags"
       (removeNoteEvent)="removeNote($event)"
       (removeTagEvent)="removeTag($event)"
+      cdkDrag>{{ notes }}
     >
     </app-note-item>
   </div>
