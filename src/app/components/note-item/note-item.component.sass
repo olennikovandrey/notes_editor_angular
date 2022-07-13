@@ -9,10 +9,13 @@
   background-size: cover
   font-size: 20px
   transition: 0.3s linear
+  cursor: move
   &:hover
     box-shadow: 0 0 20px black
   &:hover .tools-wrapper
     opacity: 1
+  &:last-child
+    border: none
 
 .tools-wrapper
   position: absolute
@@ -52,7 +55,7 @@
   height: 93%
   padding-right: 5px
   cursor: text
-  overflow-y: scroll
+  overflow: scroll
   outline: 0px solid transparent
   &:focus .edit
     content: ""
