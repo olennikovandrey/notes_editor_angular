@@ -5,13 +5,24 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './note-item.component.html',
   styleUrls: ['./note-item.component.sass']
 })
+
 export class NoteItemComponent {
   @Input() title: string = "";
   @Input() content: string = "";
   @Input() tags: RegExpMatchArray | null = [];
-  @Output() removeEvent = new EventEmitter();
+  @Output() removeNoteEvent = new EventEmitter();
+  @Output() removeTagEvent = new EventEmitter();
 
   removeNote() {
-    this.removeEvent.emit(this.title);
-  }
-}
+    this.removeNoteEvent.emit(this.title);
+  };
+
+  removeTag(event: Event) {
+    const tagRemoveHelper = {
+      title: this.title,
+      content: this.content,
+      deletedTag: (event.target as HTMLSpanElement).getAttribute("data-name")
+    }
+    this.removeTagEvent.emit(tagRemoveHelper);
+  };
+};

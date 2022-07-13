@@ -31,7 +31,8 @@
       [title]="note.title | highlight: searchValue"
       [content]="note.content | highlight: searchValue"
       [tags]="note.hashTags"
-      (removeEvent)="removeNote($event)"
+      (removeNoteEvent)="removeNote($event)"
+      (removeTagEvent)="removeTag($event)"
     >
     </app-note-item>
   </div>
@@ -43,7 +44,8 @@
       [title]="note.title"
       [content]="note.content"
       [tags]="note.hashTags"
-      (removeEvent)="removeNote($event)"
+      (removeNoteEvent)="removeNote($event)"
+      (removeTagEvent)="removeTag($event)"
     >
     </app-note-item>
   </div>
