@@ -12,15 +12,14 @@ export class NoteFormComponent implements OnInit {
   content: string = "";
   searchValue: string = "";
   notes: NotesData[] = [];
-  filteredNotes: any[] = [];
 
-  ngOnInit() {
+  ngOnInit(): void {
     localStorage.getItem("Notes") ?
       this.notes = JSON.parse(localStorage.getItem("Notes") || "{}") :
       this.notes = [];
   };
 
-  addNote(title: string, content: string) {
+  addNote(title: string, content: string): void {
     if(this.notes.find(item => item.title === title)) {
       return
     }
@@ -30,16 +29,8 @@ export class NoteFormComponent implements OnInit {
     localStorage.setItem("Notes", JSON.stringify(this.notes));
   };
 
-  removeNote(title: string) {
+  removeNote(title: string): void {
     localStorage.setItem("Notes", JSON.stringify(this.notes.filter(item => item.title !== title)));
     this.notes = this.notes.filter(item => item.title !== title);
   };
-
-  search() {
-    this.filteredNotes.length = 0;
-    this.filteredNotes.push(this.notes.filter(item =>
-      item.content.trim().toLowerCase().includes(this.searchValue.toLowerCase().trim()) ||
-      item.title.trim().toLowerCase().includes(this.searchValue.toLowerCase().trim())
-    ));
-  };
-}
+};

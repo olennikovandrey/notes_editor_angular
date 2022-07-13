@@ -13,7 +13,8 @@ import { MainPageWrapperComponent } from './components/main-page-wrapper/main-pa
 import { HeaderComponent } from './components/header/header.component';
 import { NoteFormComponent } from './components/note-form/note-form.component';
 import { NoteItemComponent } from './components/note-item/note-item.component';
-import { HighlightSearch } from './pipes/highlighted.pipe';
+import { HighlightSearchPipe } from './pipes/highlighted.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HighlightSearch } from './pipes/highlighted.pipe';
     HeaderComponent,
     NoteFormComponent,
     NoteItemComponent,
-    HighlightSearch
+    HighlightSearchPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

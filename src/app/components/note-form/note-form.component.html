@@ -21,17 +21,12 @@
     <mat-label>Search request field</mat-label>
     <input
       matInput
-      [(ngModel)]="searchValue"
-      (keyup)="search()">
+      [(ngModel)]="searchValue">
   </mat-form-field>
 </div>
 
-<div *ngIf="searchValue && !filteredNotes[0][0]" class="note-items-wrapper">
-  <p style="font-size: 25px;">There is no mathes to your search request</p>
-</div>
-
-<div *ngIf="searchValue && filteredNotes" class="note-items-wrapper">
-  <div *ngFor="let note of filteredNotes[0]">
+<div *ngIf="searchValue" class="note-items-wrapper">
+  <div *ngFor="let note of notes | filter: searchValue">
     <app-note-item
       [title]="note.title | highlight: searchValue"
       [content]="note.content | highlight: searchValue"
