@@ -13,6 +13,8 @@ import { MainPageWrapperComponent } from './components/main-page-wrapper/main-pa
 import { HeaderComponent } from './components/header/header.component';
 import { NoteFormComponent } from './components/note-form/note-form.component';
 import { NoteItemComponent } from './components/note-item/note-item.component';
+import { HighlightSearchPipe } from './pipes/highlighted.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NoteItemComponent } from './components/note-item/note-item.component';
     MainPageWrapperComponent,
     HeaderComponent,
     NoteFormComponent,
-    NoteItemComponent
+    NoteItemComponent,
+    HighlightSearchPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

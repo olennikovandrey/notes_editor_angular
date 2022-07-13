@@ -7,5 +7,5 @@ export class NotesData {
     this.title = title;
     this.content = content;
     this.hashTags = hashTags;
-  }
-}
+  };
+};

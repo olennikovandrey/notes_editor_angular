@@ -4,8 +4,8 @@
     <span class="remove" (click)="removeNote()"></span>
   </div>
   <div class="note">
-    <span class="note-title">{{ title }}</span>
-    <span class="note-content">{{ content }}</span>
+    <span class="note-title" [innerHTML]="title"></span>
+    <span class="note-content" [innerHTML]="content"></span>
   </div>
   <div class="tags-wrapper">
     <div class="tag-wrapper" *ngFor="let tag of tags">
