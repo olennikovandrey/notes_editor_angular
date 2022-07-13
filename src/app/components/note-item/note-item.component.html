@@ -10,7 +10,7 @@
   <div class="tags-wrapper">
     <div class="tag-wrapper" *ngFor="let tag of tags">
       <span class="bottom-tag">{{ tag }}</span>
-      <span class="delete-tag"></span>
+      <span class="delete-tag" [attr.data-name]="tag" (click)="removeTag($event)"></span>
     </div>
   </div>
 </div>
