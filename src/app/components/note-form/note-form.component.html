@@ -25,8 +25,10 @@
   </mat-form-field>
 </div>
 
-<div *ngIf="searchValue && (notes | filter: searchValue).length === 0" class="note-items-wrapper">
-  <p style="font-size: 2rem; margin-top: 50px">There is no any matches according to your search request</p>
+
+<div *ngIf="searchValue && (notes | filter: searchValue).length === 0" class="no-matches-wrapper">
+  <p>There is no any matches according to your search request</p>
+  <img src="../../../assets/images/note-item/no-matches.png" alt="no-matches">
 </div>
 
 <div *ngIf="searchValue" class="note-items-wrapper">
