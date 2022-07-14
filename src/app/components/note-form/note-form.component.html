@@ -25,11 +25,15 @@
   </mat-form-field>
 </div>
 
+<div *ngIf="searchValue && (notes | filter: searchValue).length === 0" class="note-items-wrapper">
+  <p style="font-size: 2rem; margin-top: 50px">There is no any matches according to your search request</p>
+</div>
+
 <div *ngIf="searchValue" class="note-items-wrapper">
   <div *ngFor="let note of notes | filter: searchValue; let i = index">
     <app-note-item
-      [title]="note.title"
-      [content]="note.content"
+      [title]="note.title | highlight: searchValue"
+      [content]="note.content | highlight: searchValue"
       [tags]="note.hashTags"
       [index]="i"
       (removeNoteEvent)="removeNote($event)"
