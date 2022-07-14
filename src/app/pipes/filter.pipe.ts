@@ -8,8 +8,8 @@ import { NotesData } from '../models/notes-data.model';
 export class FilterPipe implements PipeTransform {
   transform(notes: NotesData[], searchValue: string): NotesData[] {
     return notes.filter((item: NotesData) =>
-      item.content.includes(searchValue) ||
-      item.title.includes(searchValue)
+      item.content.toLowerCase().includes(searchValue.toLowerCase()) ||
+      item.title.toLowerCase().includes(searchValue.toLowerCase())
     );
   };
 };
