@@ -21,7 +21,7 @@ export class NoteItemComponent {
   };
 
   removeTag(i: number) {
-    const newContent = this.content.replace(this.tags![i], this.tags![i].slice(1))
+    const newContent = this.content.replace(this.tags![i], this.tags![i].slice(1));
     this.tags?.splice(i, 1);
     const tagRemoveHelper = {
       title: this.title,
@@ -30,7 +30,6 @@ export class NoteItemComponent {
     };
 
     this.removeTagEvent.emit(tagRemoveHelper);
-    console.log(newContent)
   };
 
   editNote() {
