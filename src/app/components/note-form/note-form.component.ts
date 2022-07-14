@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { NotesData } from "../../models/notes-data.model";
 
 @Component({
@@ -16,7 +15,7 @@ export class NoteFormComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.getItem("Notes") ?
-      this.notes = JSON.parse(localStorage.getItem("Notes") || "{}") :
+      this.notes = JSON.parse(localStorage.getItem("Notes") || "[]") :
       this.notes = [];
   };
 
@@ -36,16 +35,17 @@ export class NoteFormComponent implements OnInit {
     this.notes = this.notes.filter(item => item.title !== title);
   };
 
-  removeTag(tagInfo: { title: string, content: string, deletedTag: string }): void {
+  removeTag(tagInfo: { title: string, content: string, tags: string[] }): void {
     const currentNoteIndex = this.notes.findIndex(item => item.title === tagInfo.title);
-    const newTags: string[] = this.notes[currentNoteIndex].hashTags!.filter(tag => tag !== tagInfo.deletedTag);
-    const newNote = new NotesData(tagInfo.title, tagInfo.content, newTags);
+    const newNote = new NotesData(tagInfo.title, tagInfo.content, tagInfo.tags);
 
     this.notes.splice(currentNoteIndex, 1, newNote);
     localStorage.setItem("Notes", JSON.stringify(this.notes));
   };
 
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.notes, event.previousIndex, event.currentIndex);
-  }
+  editNote(editedNote: NotesData) {
+    const currentNoteIndex = this.notes.findIndex(item => item.title === editedNote.title);
+    this.notes.splice(currentNoteIndex, 1, editedNote);
+    localStorage.setItem("Notes", JSON.stringify(this.notes));
+  };
 };

@@ -26,27 +26,30 @@
 </div>
 
 <div *ngIf="searchValue" class="note-items-wrapper">
-  <div *ngFor="let note of notes | filter: searchValue">
+  <div *ngFor="let note of notes | filter: searchValue; let i = index">
     <app-note-item
-      [title]="note.title | highlight: searchValue"
-      [content]="note.content | highlight: searchValue"
+      [title]="note.title"
+      [content]="note.content"
       [tags]="note.hashTags"
+      [index]="i"
       (removeNoteEvent)="removeNote($event)"
       (removeTagEvent)="removeTag($event)"
+      (editNoteEvent)="editNote($event)"
     >
     </app-note-item>
   </div>
 </div>
 
-<div *ngIf="notes.length > 0 && !searchValue" class="note-items-wrapper" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
-  <div *ngFor="let note of notes">
+<div *ngIf="notes.length > 0 && !searchValue" class="note-items-wrapper">
+  <div *ngFor="let note of notes; let i = index">
     <app-note-item
       [title]="note.title"
       [content]="note.content"
       [tags]="note.hashTags"
+      [index]="i"
       (removeNoteEvent)="removeNote($event)"
       (removeTagEvent)="removeTag($event)"
-      cdkDrag>{{ notes }}
+      (editNoteEvent)="editNote($event)"
     >
     </app-note-item>
   </div>

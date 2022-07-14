@@ -1,16 +1,16 @@
 <div class="note-wrapper">
   <div class="tools-wrapper">
-    <span class="save"></span>
+    <span class="save" (click)="editNote()"></span>
     <span class="remove" (click)="removeNote()"></span>
   </div>
   <div class="note">
     <span class="note-title" [innerHTML]="title"></span>
-    <span class="note-content" [innerHTML]="content"></span>
+    <div class="note-content" contenteditable="true" [innerHTML]="content"></div>
   </div>
   <div class="tags-wrapper">
-    <div class="tag-wrapper" *ngFor="let tag of tags">
+    <div class="tag-wrapper" *ngFor="let tag of tags; let i = index">
       <span class="bottom-tag">{{ tag }}</span>
-      <span class="delete-tag" [attr.data-name]="tag" (click)="removeTag($event)"></span>
+      <span class="delete-tag" (click)="removeTag(i)"></span>
     </div>
   </div>
 </div>
