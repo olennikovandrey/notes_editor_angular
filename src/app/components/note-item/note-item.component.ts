@@ -20,19 +20,15 @@ export class NoteItemComponent {
     this.removeNoteEvent.emit(this.title);
   };
 
-  removeTag(i: number) {
+  removeTag(i: number): void {
     const newContent = this.content.replace(this.tags![i], this.tags![i].slice(1));
     this.tags?.splice(i, 1);
-    const tagRemoveHelper = {
-      title: this.title,
-      content: newContent,
-      tags: this.tags
-    };
+    const editedNote: NotesData = new NotesData(this.title, newContent, this.tags);
 
-    this.removeTagEvent.emit(tagRemoveHelper);
+    this.removeTagEvent.emit(editedNote);
   };
 
-  editNote() {
+  editNote(): void {
     const newContent: string = document.querySelectorAll(".note-content")[this.index].textContent!;
     const tags: RegExpMatchArray | null = newContent!.match(/\B(#[a-zA-ZА-Яа-я0-9Ёёй]+)(\s|$)/ig);
     const editedNote: NotesData = new NotesData(this.title, newContent, tags);

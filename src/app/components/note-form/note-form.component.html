@@ -39,8 +39,8 @@
       [tags]="note.hashTags"
       [index]="i"
       (removeNoteEvent)="removeNote($event)"
-      (removeTagEvent)="removeTag($event)"
-      (editNoteEvent)="editNote($event)"
+      (removeTagEvent)="newNoteReplacer($event)"
+      (editNoteEvent)="newNoteReplacer($event)"
     >
     </app-note-item>
   </div>
@@ -54,8 +54,8 @@
       [tags]="note.hashTags"
       [index]="i"
       (removeNoteEvent)="removeNote($event)"
-      (removeTagEvent)="removeTag($event)"
-      (editNoteEvent)="editNote($event)"
+      (removeTagEvent)="newNoteReplacer($event)"
+      (editNoteEvent)="newNoteReplacer($event)"
     >
     </app-note-item>
   </div>
