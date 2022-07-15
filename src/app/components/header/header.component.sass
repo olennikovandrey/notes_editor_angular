@@ -4,15 +4,24 @@ header
   margin-bottom: 10px
   display: flex
   justify-content: space-between
+  font-size: 2rem
+  text-align: center
+  @media only screen and (max-width: 425px)
+    margin-bottom: 5px
+    font-size: 1.6rem
+    line-height: 1.4rem
+
+    font-size: 1.3rem
+
   & div:first-child
     display: flex
     align-items: center
     width: 90%
-    font-size: 2rem
     & img
       height: 100%
       margin-right: 2vw
   & img:nth-child(2)
+    margin-left: 2vw
     cursor: pointer
     transition: .2s linear
     &:hover

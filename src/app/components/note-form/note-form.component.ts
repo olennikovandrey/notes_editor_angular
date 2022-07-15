@@ -25,10 +25,16 @@ export class NoteFormComponent implements OnInit {
       return
     };
 
+    if(title.trim().length === 0 || content.trim().length === 0) {
+      alert("You should not add an empty note. Fill all fields")
+      return
+    };
     const tags: RegExpMatchArray | null = content.match(/\B(#[a-zA-ZА-Яа-я0-9Ёёй]+)(\s|$)/ig);
     const newNote = new NotesData(title, content, tags);
     this.notes.push(newNote);
     localStorage.setItem("Notes", JSON.stringify(this.notes));
+    document.querySelectorAll("input").forEach(item => item.value = "");
+    document.querySelector("textarea")!.value = "";
   };
 
   removeNote(title: string): void {
