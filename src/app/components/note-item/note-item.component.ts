@@ -28,7 +28,7 @@ export class NoteItemComponent {
     this.removeTagEvent.emit(editedNote);
   };
 
-  editNote(): void {
+  saveEditedNote(): void {
     const newContent: string = document.querySelectorAll(".note-content")[this.index].textContent!;
     const tags: RegExpMatchArray | null = newContent!.match(/\B(#[a-zA-ZА-Яа-я0-9Ёёй]+)(\s|$)/ig);
     const editedNote: NotesData = new NotesData(this.title, newContent, tags);
