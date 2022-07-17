@@ -21,12 +21,12 @@ export class NoteFormComponent implements OnInit {
 
   addNote(title: string, content: string): void {
     if(this.notes.find(item => item.title === title)) {
-      alert("This title is already taken. Try another one")
+      alert("This title is already taken. Try another one");
       return
     };
 
     if(title.trim().length === 0 || content.trim().length === 0) {
-      alert("You should not add an empty note. Fill all fields")
+      alert("You should not add an empty note. Fill all fields");
       return
     };
     const tags: RegExpMatchArray | null = content.match(/\B(#[a-zA-ZА-Яа-я0-9Ёёй]+)(\s|$)/ig);

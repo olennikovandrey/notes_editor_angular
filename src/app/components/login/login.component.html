@@ -1,0 +1,31 @@
+<section class="login-wrapper">
+  <form [formGroup]="loginForm" (ngSubmit)="submitLogin()" class="form-wrapper">
+    <h2>REGISTER OR LOGIN</h2>
+    <p>Please enter your login and password</p>
+    <mat-form-field appearance="outline" style="margin-bottom: 0;">
+      <mat-label>Login (2 characters minimum)</mat-label>
+      <input
+        matInput
+        formControlName="login"
+      >
+    </mat-form-field>
+    <p *ngIf="this.loginForm.get('login')?.invalid && this.loginForm.get('login')?.touched" class="warn-text">
+      <small>Login can't be less then 2 symbols</small>
+    </p>
+    <mat-form-field appearance="outline" style="margin-bottom: 0;">
+      <mat-label>Password (8 characters minimum)</mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+      >
+    </mat-form-field>
+    <p *ngIf="this.loginForm.get('password')?.invalid && this.loginForm.get('password')?.touched" class="warn-text">
+      <small>Login can't be less then 8 symbols</small>
+    </p>
+    <div class="login-btns-wrapper">
+      <button mat-raised-button type="button" [disabled]="loginForm.invalid" (click)="register()">Register</button>
+      <button mat-raised-button type="submit" [disabled]="loginForm.invalid">Log in</button>
+    </div>
+  </form>
+</section>
