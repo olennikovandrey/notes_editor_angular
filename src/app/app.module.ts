@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,6 +15,8 @@ import { NoteFormComponent } from './components/note-form/note-form.component';
 import { NoteItemComponent } from './components/note-item/note-item.component';
 import { HighlightSearchPipe } from './pipes/highlighted.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { LoginComponent } from './components/login/login.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { FilterPipe } from './pipes/filter.pipe';
     NoteFormComponent,
     NoteItemComponent,
     HighlightSearchPipe,
-    FilterPipe
+    FilterPipe,
+    LoginComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +37,11 @@ import { FilterPipe } from './pipes/filter.pipe';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {}
