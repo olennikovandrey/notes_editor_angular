@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NotesData } from '../../models/notes-data.model';
+import { NotesService } from '../../services/notes.service';
 
 @Component({
   selector: 'app-note-item',
@@ -13,11 +14,12 @@ export class NoteItemComponent {
   @Input() tags: RegExpMatchArray | null = [];
   @Input() index: number = 0;
   @Output() removeNoteEvent = new EventEmitter();
-  @Output() removeTagEvent = new EventEmitter();
-  @Output() editNoteEvent = new EventEmitter();
+
+  constructor(private notesService: NotesService) {}
 
   removeNote() {
-    this.removeNoteEvent.emit(this.title);
+    this.notesService.removeNote(this.title);
+    this.removeNoteEvent.emit();
   };
 
   removeTag(i: number): void {
@@ -25,14 +27,13 @@ export class NoteItemComponent {
     this.tags?.splice(i, 1);
     const editedNote: NotesData = new NotesData(this.title, newContent, this.tags);
 
-    this.removeTagEvent.emit(editedNote);
+    this.notesService.newNoteReplacer(editedNote);
   };
 
   saveEditedNote(): void {
     const newContent: string = document.querySelectorAll(".note-content")[this.index].textContent!;
     const tags: RegExpMatchArray | null = newContent!.match(/\B(#[a-zA-ZА-Яа-я0-9Ёёй]+)(\s|$)/ig);
     const editedNote: NotesData = new NotesData(this.title, newContent, tags);
-
-    this.editNoteEvent.emit(editedNote);
+    this.notesService.newNoteReplacer(editedNote);
   };
 };

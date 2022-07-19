@@ -20,7 +20,7 @@
     </mat-form-field>
     <button
       mat-raised-button
-      (click)="addNote(title, content)">
+      (click)="addNote()">
       Save
     </button>
   </div>
@@ -39,9 +39,7 @@
         [content]="note.content | highlight: searchValue"
         [tags]="note.hashTags"
         [index]="i"
-        (removeNoteEvent)="removeNote($event)"
-        (removeTagEvent)="newNoteReplacer($event)"
-        (editNoteEvent)="newNoteReplacer($event)"
+        (removeNoteEvent)="removeNote()"
       >
       </app-note-item>
     </ng-container>
@@ -54,9 +52,7 @@
         [content]="note.content"
         [tags]="note.hashTags"
         [index]="i"
-        (removeNoteEvent)="removeNote($event)"
-        (removeTagEvent)="newNoteReplacer($event)"
-        (editNoteEvent)="newNoteReplacer($event)"
+        (removeNoteEvent)="removeNote()"
       >
       </app-note-item>
     </ng-container>
